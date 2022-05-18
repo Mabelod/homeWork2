@@ -21,25 +21,24 @@ public class Main {
     }
 
     public static void task2() {
-        int clientOS = 1;
-        int clientDeviceYear = 2016;
+        int clientOS = 0;
+        int clientDeviceYear = 1999;
         boolean newIos = clientOS == 0;
-        boolean oldIos = clientDeviceYear < 2015;
+        boolean oldPhone = clientDeviceYear < 2015;
         boolean newAndroid = clientOS == 1;
-        boolean oldAndroid = clientDeviceYear < 2015;
         if (newIos) {
-            if (oldIos) {
+            if (oldPhone) {
                 System.out.println("Установите облегченную версию приложения для IOS по ссылке");
             } else {
                 System.out.println("Установите версию приложения для IOS по ссылке");
             }
         }
         if (newAndroid) {
-        }
-        if (oldAndroid) {
-            System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        } else {
-            System.out.println("Установите версию приложения для Android по ссылке");
+            if (oldPhone) {
+                System.out.println("Установите облегченную версию приложения для Android по ссылке");
+            } else {
+                System.out.println("Установите версию приложения для Android по ссылке");
+            }
         }
     }
 
@@ -55,12 +54,14 @@ public class Main {
     public static void task4() {
         int deliveryDistance = 95;
         int estimatedDeliveryTime = 1;
+        boolean interval1 = deliveryDistance > 20;
+        boolean interval2 = deliveryDistance > 60;
 
-        if (deliveryDistance > 20) {
+        if (interval1) {
             estimatedDeliveryTime++;
         }
 
-        if (deliveryDistance > 60) {
+        if (interval2) {
             estimatedDeliveryTime++;
         }
         System.out.println("Потребуется дней: " + estimatedDeliveryTime);
