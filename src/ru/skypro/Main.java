@@ -7,6 +7,8 @@ public class Main {
         task3();
         task4();
         task5();
+        task6();
+        task7();
     }
 
     public static void task1() {
@@ -93,5 +95,58 @@ public class Main {
             default:
                 System.out.println("Введите корректный месяц");
         }
+    }
+
+    public static void task6() {
+        int age = 28;
+        int salary = 75_000;
+        int limit;
+
+        boolean years = age >= 23;
+        boolean limit1 = salary >= 50000 && salary < 80000;
+        boolean limit2 = salary >= 80000;
+
+        if (years)
+            limit = salary * 3;
+        else
+            limit = salary * 2;
+
+        if (limit1) {
+            limit *= 1.2;
+        } else if (limit2) {
+            limit *= 1.5;
+        }
+
+        System.out.println("Мы готовы выдать вам кредитную карту с лимитом " + limit + " рублей");
+    }
+
+    public static void task7() {
+        int age = 29;
+        int salary = 60_774;
+        int wantedSum = 330_000;
+        double maximumPayment = (double) salary / 2;
+        double baseRate = 0.1;
+        double amountPerYear;
+        double interestPerMonth;
+
+        boolean years23 = age < 23;
+        boolean years30 = age < 30;
+
+        if (years23) {
+            baseRate += 0.01;
+        } else if (years30) {
+            baseRate += 0.005;
+        }
+
+        if (salary >= 80_000)
+            baseRate -= 0.007;
+
+        amountPerYear = wantedSum + wantedSum * baseRate; // сумма с % за год
+        interestPerMonth = amountPerYear / 12; // платеж с % в месяц
+
+        if (maximumPayment > interestPerMonth)
+            System.out.println("Максимальный платеж при ЗП " + salary + " равен " + (int) maximumPayment + " рублей. Платеж по кредиту " + wantedSum + " рублей - Одобрено.");
+        else
+            System.out.println("Максимальный платеж при ЗП " + salary + " равен " + (int) maximumPayment + " рублей. Платеж по кредиту " + wantedSum + " рублей - Отказано.");
     }
 }
